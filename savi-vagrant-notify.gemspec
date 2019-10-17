@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'vagrant-notify-forwarder/version'
+require 'savi-vagrant-notify/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "vagrant-notify-forwarder"
-  spec.version       = VagrantPlugins::VagrantNotifyForwarder::VERSION
-  spec.authors       = ["Magnus Hallin"]
-  spec.email         = ["mhallin@gmail.com"]
+  spec.name          = "savi-vagrant-notify"
+  spec.version       = VagrantPlugins::SAVIVagrantNotify::VERSION
+  spec.authors       = ["SAVI Controls, LLC"]
+  spec.email         = ["support@savicontrols.com"]
   spec.summary       = "A vagrant plugin that forwards file system events from the host to the guest"
   spec.description   = spec.summary
-  spec.homepage      = "https://github.com/mhallin/vagrant-notify-forwarder"
+  spec.homepage      = "https://github.com/pward123/vagrant-notify-forwarder"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

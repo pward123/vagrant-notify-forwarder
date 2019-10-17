@@ -1,5 +1,5 @@
 module VagrantPlugins
-  module VagrantNotifyForwarder
+  module SAVIVagrantNotify
     class Config < Vagrant.plugin(2, :config)
       attr_accessor :port
       attr_accessor :enable

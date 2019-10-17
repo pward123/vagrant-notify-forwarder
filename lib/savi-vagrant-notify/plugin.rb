@@ -3,9 +3,9 @@ require 'vagrant'
 $BOOT_SAVED = false
 
 module VagrantPlugins
-  module VagrantNotifyForwarder
+  module SAVIVagrantNotify
     class Plugin < Vagrant.plugin('2')
-      name 'vagrant-notify-forwarder'
+      name 'savi-vagrant-notify'
       description 'Wrapper around the notify-forwarder file system event forwarder'
 
       register_boot_hooks = lambda do |hook|
@@ -15,39 +15,39 @@ module VagrantPlugins
         require_relative 'action/check_boot_state'
 
         hook.before VagrantPlugins::ProviderVirtualBox::Action::Resume,
-                    VagrantPlugins::VagrantNotifyForwarder::Action::CheckBootState
+                    VagrantPlugins::SAVIVagrantNotify::Action::CheckBootState
         hook.after Vagrant::Action::Builtin::Provision,
-                   VagrantPlugins::VagrantNotifyForwarder::Action::StartHostForwarder
-        hook.after VagrantPlugins::VagrantNotifyForwarder::Action::StartHostForwarder,
-                   VagrantPlugins::VagrantNotifyForwarder::Action::StartClientForwarder
+                   VagrantPlugins::SAVIVagrantNotify::Action::StartHostForwarder
+        hook.after VagrantPlugins::SAVIVagrantNotify::Action::StartHostForwarder,
+                   VagrantPlugins::SAVIVagrantNotify::Action::StartClientForwarder
       end
 
       register_suspend_hooks = lambda do |hook|
         require_relative 'action/stop_host_forwarder'
 
         hook.before VagrantPlugins::ProviderVirtualBox::Action::Suspend,
-                    VagrantPlugins::VagrantNotifyForwarder::Action::StopHostForwarder
+                    VagrantPlugins::SAVIVagrantNotify::Action::StopHostForwarder
       end
 
       register_resume_hooks = lambda do |hook|
         require_relative 'action/start_host_forwarder'
 
         hook.after VagrantPlugins::ProviderVirtualBox::Action::Provision,
-                    VagrantPlugins::VagrantNotifyForwarder::Action::StartHostForwarder
+                    VagrantPlugins::SAVIVagrantNotify::Action::StartHostForwarder
       end
 
       register_halt_hooks = lambda do |hook|
         require_relative 'action/stop_host_forwarder'
 
         hook.before Vagrant::Action::Builtin::GracefulHalt,
-                    VagrantPlugins::VagrantNotifyForwarder::Action::StopHostForwarder
+                    VagrantPlugins::SAVIVagrantNotify::Action::StopHostForwarder
       end
 
       register_destroy_hooks = lambda do |hook|
         require_relative 'action/stop_host_forwarder'
 
         hook.before Vagrant::Action::Builtin::GracefulHalt,
-                    VagrantPlugins::VagrantNotifyForwarder::Action::StopHostForwarder
+                    VagrantPlugins::SAVIVagrantNotify::Action::StopHostForwarder
       end
 
       config(:notify_forwarder) do

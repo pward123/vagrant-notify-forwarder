@@ -1,7 +1,7 @@
-require 'vagrant-notify-forwarder/utils'
+require 'savi-vagrant-notify/utils'
 
 module VagrantPlugins
-  module VagrantNotifyForwarder
+  module SAVIVagrantNotify
     module Action
       class StartClientForwarder
         def initialize(app, env)
@@ -20,8 +20,8 @@ module VagrantPlugins
             hardware = Utils.parse_hardware_name data if type == :stdout
           end
 
-          env[:ui].error 'Notify-forwarder: Unsupported client operating system' if os == :unsupported
-          env[:ui].error 'Notify-forwarder: Unsupported client hardware' if hardware == :unsupported
+          env[:ui].error 'SAVI-Vagrant-Notify Unsupported client operating system' if os == :unsupported
+          env[:ui].error 'SAVI-Vagrant-Notify Unsupported client hardware' if hardware == :unsupported
 
           if os != :unsupported and hardware != :unsupported
             Utils.ensure_binary_downloaded env, os, hardware
@@ -49,7 +49,7 @@ module VagrantPlugins
           env[:machine].communicate.upload(path, "/tmp/notify-forwarder")
           env[:ui].output("Starting notify-forwarder ...")
           env[:machine].communicate.execute(start_command)
-          env[:ui].detail("Notify-forwarder: guest listening for file change notifications on 0.0.0.0:#{port}.")
+          env[:ui].detail("SAVI-Vagrant-Notify guest listening for file change notifications on 0.0.0.0:#{port}.")
         end
       end
     end

@@ -1,7 +1,7 @@
 require 'vagrant/util/downloader'
 
 module VagrantPlugins
-  module VagrantNotifyForwarder
+  module SAVIVagrantNotify
     class Utils
       @@OS_NAMES = {
           "Linux" => :linux,
@@ -45,7 +45,7 @@ module VagrantPlugins
         end
 
         if should_download
-          env[:ui].info 'Notify-forwarder: Downloading client'
+          env[:ui].info 'SAVI-Vagrant-Notify Downloading client'
           downloader = Vagrant::Util::Downloader.new url, path
           downloader.download!
         end

@@ -1,7 +1,7 @@
-require 'vagrant-notify-forwarder/utils'
+require 'savi-vagrant-notify/utils'
 
 module VagrantPlugins
-  module VagrantNotifyForwarder
+  module SAVIVagrantNotify
     module Action
       class StopHostForwarder
         def initialize(app, env)

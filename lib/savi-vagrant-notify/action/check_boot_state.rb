@@ -1,5 +1,5 @@
 module VagrantPlugins
-  module VagrantNotifyForwarder
+  module SAVIVagrantNotify
     module Action
       class CheckBootState
         def initialize(app, env)

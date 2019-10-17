@@ -1,8 +1,8 @@
-require 'vagrant-notify-forwarder/plugin'
-require 'vagrant-notify-forwarder/config'
+require 'savi-vagrant-notify/plugin'
+require 'savi-vagrant-notify/config'
 
 module VagrantPlugins
-  module VagrantNotifyForwarder
+  module SAVIVagrantNotify
     def self.source_root
       @source_root ||= Pathname.new(File.expand_path('../../', __FILE__))
     end

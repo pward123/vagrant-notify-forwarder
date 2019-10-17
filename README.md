@@ -1,3 +1,7 @@
+# SAVI Vagrant Notify
+
+Fork of the dead [vagrant-notify-forwarder](https://github.com/mhallin/vagrant-notify-forwarder) project.
+
 # Vagrant file system notification forwarder plugin
 
 A vagrant plugin that uses [notify-forwarder](https://github.com/mhallin/notify-forwarder) to
@@ -10,7 +14,7 @@ inotify or similar for improved performance and reduced CPU usage.
 ## Installation and usage
 
 ```terminal
-$ vagrant plugin install vagrant-notify-forwarder
+$ vagrant plugin install savi-vagrant-notify
 $ vagrant reload
 ```
 

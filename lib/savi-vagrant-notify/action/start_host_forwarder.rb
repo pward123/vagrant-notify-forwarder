@@ -1,7 +1,7 @@
-require 'vagrant-notify-forwarder/utils'
+require 'savi-vagrant-notify/utils'
 
 module VagrantPlugins
-  module VagrantNotifyForwarder
+  module SAVIVagrantNotify
     module Action
       class StartHostForwarder
         def initialize(app, env)
@@ -12,8 +12,8 @@ module VagrantPlugins
           os = Utils.parse_os_name `uname -s`
           hardware = Utils.parse_hardware_name `uname -m`
 
-          env[:ui].error 'Notify-forwarder: Unsupported host operating system' if os == :unsupported
-          env[:ui].error 'Notify-forwarder: Unsupported host hardware' if hardware == :unsupported
+          env[:ui].error 'SAVI-Vagrant-Notify Unsupported host operating system' if os == :unsupported
+          env[:ui].error 'SAVI-Vagrant-Notify Unsupported host hardware' if hardware == :unsupported
 
           if os != :unsupported and hardware != :unsupported
             Utils.ensure_binary_downloaded env, os, hardware
@@ -49,8 +49,8 @@ module VagrantPlugins
 
                 args = "watch -c 127.0.0.1:#{port} #{hostpath} #{guestpath}"
                 start_watcher env, "#{path} #{args}"
-                env[:ui].detail("Notify-forwarder: host sending file change notifications to 127.0.0.1:#{port}")
-                env[:ui].detail("Notify-forwarder: host forwarding notifications on #{hostpath} to #{guestpath}")
+                env[:ui].detail("SAVI-Vagrant-Notify host sending file change notifications to 127.0.0.1:#{port}")
+                env[:ui].detail("SAVI-Vagrant-Notify host forwarding notifications on #{hostpath} to #{guestpath}")
               end
             end
           end
